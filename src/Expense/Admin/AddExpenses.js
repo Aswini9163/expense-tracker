@@ -14,7 +14,8 @@ const AddExpenses = () => {
     //console.log(name, category, price, date);
     axios.post('http://localhost:4000/expenses',{name,category,price,date})
     .then((res) => {
-       // console.log(res.data)
+      alert("working")
+        console.log(res.data)
         alert('New Expense added successfully')
         setName('')
         setCategory('')

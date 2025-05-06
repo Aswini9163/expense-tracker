@@ -14,6 +14,7 @@ const ViewExpenses = () => {
         axios.get('http://localhost:4000/expenses')
         .then((res)=> {
            // console.log(res.data)
+           console.log(res.json)
              setExpenses(res.data);
         })
         .catch((err)=>{
@@ -80,7 +81,7 @@ const ViewExpenses = () => {
                                 <td>{exp.category}</td>
                                 <td>{exp.price}</td>
                                 <td>{exp.date}</td>
-                                <td><button className='btn btn-primary'onClick={()=>getOneRecord(exp.id)} ><i className="bi bi-pencil"></i></button></td>
+                                <td><button className='btn btn-primary'onClick={()=>getOneRecord(exp.id)}data-bs-toggle="modal" data-bs-target="#exampleModal" ><i className="bi bi-pencil"></i></button></td>
                                 <td><button className='btn btn-danger'onClick={()=>deleteOneRecord(exp.id)}><i className="bi bi-trash3"></i></button></td>
                             </tr>
                         )
@@ -88,8 +89,13 @@ const ViewExpenses = () => {
                 }
             </tbody>
         </table>
-                 <div className='col-md-6 shadow p-5 mx-auto'>
-                    <h3 className='mb-3'>Edit Expenses</h3>
+        <div class="modal fade" id="exampleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Edit Expenses</h1>
+                   </div>
+                   <div class="modal-body">
                  
                     <form onSubmit={submitHandler}>
                     <input type="text" name="name" onChange={(e)=>setName(e.target.value)}placeholder="Name" value={name} className="form-control mb-3"/>
@@ -112,8 +118,16 @@ const ViewExpenses = () => {
                     <input type="submit" value={`Edit Expenses`} className="btn btn-primary"/>
                 </form>
                 </div>
+                </div>
+                </div>
+              
+                </div>
     </div>
   )
 }
 
 export default ViewExpenses
+
+
+  
+
